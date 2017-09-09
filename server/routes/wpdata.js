@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
     })
     .then(r => {
 
-      console.log('response', r)
+      // console.log('response', r)
+      console.log('fetched from wp')
       res.send(JSON.stringify(r));
     });
   // connection.query('SELECT * from members', function (error, results, fields) {
