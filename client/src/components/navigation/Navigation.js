@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
@@ -18,14 +18,10 @@ const Navigation = props => {
           <Menu>
             <Link to="/"><MenuItem primaryText="Home" /></Link>
             <Link to="/draft-testing"><MenuItem primaryText="draft-testing" /></Link>
-            <MenuItem primaryText="empty" />
-            <MenuItem primaryText="empty" />
           </Menu>
         </Paper>
         <Paper style={style}>
           <Menu>
-            <MenuItem primaryText="empty" />
-            <MenuItem primaryText="empty" />
             <MenuItem primaryText="empty" />
             <MenuItem primaryText="empty" />
           </Menu>

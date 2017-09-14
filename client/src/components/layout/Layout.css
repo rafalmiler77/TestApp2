@@ -1,6 +1,9 @@
 header {
   background-color: #59A8E9;
-  height: 150px;
+  height: 50px;
   padding: 20px;
   color: white;
+}
+h3 {
+  text-align: center
 }
