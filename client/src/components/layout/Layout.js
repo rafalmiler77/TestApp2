@@ -5,12 +5,14 @@ import './Layout.css';
 const Layout = props => {
 
   return (
-    <div>
+    <div id="main-container">
       <header>
         <h3>My Testing Of Everything</h3>
       </header>
       <Navigation />
-      {props.children}
+      <div id="children-container">
+        {props.children}
+      </div>
     </div>
   );
 }

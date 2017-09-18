@@ -1,27 +1,3 @@
-import {
-
-} from './actionTypes'
-
-const initialState = {
-  lightboxStatus: false,
-  lightboxImage: null,
-}
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case 'OPEN_LIGHTBOX':
-      return {
-        ...state,
-        lightboxImage: action.value,
-        lightboxStatus: true
-      }
-    case 'CLOSE_LIGHTBOX':
-      return {
-        ...state,
-        lightboxImage: null,
-        lightboxStatus: false
-      }
-    default:
-      return state
-  }
-}
+export const SAVE_DRAFT_HTML_IN_STORE = 'SAVE_DRAFT_HTML_IN_STORE'
+export const SAVE_DRAFT_RAW_IN_STORE = 'SAVE_DRAFT_RAW_IN_STORE'
+export const FETCH_WP_CONTENT = 'FETCH_WP_CONTENT'

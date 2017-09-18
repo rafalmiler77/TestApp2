@@ -1,11 +1,10 @@
 import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
 // import persistState from 'redux-localstorage'
 import thunkMiddleware from 'redux-thunk'
-
-import lightboxReducer from './state/reducer'
+import draftReducer from './state/draftReducer';
 
 const reducer = combineReducers({
-  storeData: lightboxReducer,
+  draftData: draftReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

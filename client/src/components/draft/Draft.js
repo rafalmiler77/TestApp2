@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DraftNav from './DraftNav';
 import './Draft.css';
 
 class Draft extends Component {
@@ -22,8 +23,8 @@ class Draft extends Component {
     console.log('state', this.state.data)
     return (
       <div className="draft-container">
-
-        <div>Articles from wp-site:
+        <DraftNav />
+        <div>Titles of articles from wp-site:
           {
             this.state.data !== 'loading' ?
               this.state.data.map(

@@ -7,6 +7,10 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import Layout from './components/layout/Layout';
 import Main from './components/main/Main';
 import Draft from './components/draft/Draft';
+import MyEditor from './components/draft/MyEditor';
+import Entity from './components/draft/Entity';
+import Link from './components/draft/Link';
+
 
 class App extends Component {
   render() {
@@ -19,7 +23,10 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route exact path="/" component={Main} />
-              <Route path="/draft-testing" component={Draft} />
+              <Route exact path="/draft-testing" component={Draft} />
+              <Route exact path="/draft-testing/editor" component={MyEditor} />
+              <Route exact path="/draft-testing/entity" component={Entity} />
+              <Route exact path="/draft-testing/link" component={Link} />
               {/* <Route component={NotFound} /> */}
             </ Switch>
           </Layout>
