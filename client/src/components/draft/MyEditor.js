@@ -1,5 +1,6 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
+import DraftNav from './DraftNav';
 import './MyEditor.css'
 
 class MyEditor extends React.Component {
@@ -58,6 +59,7 @@ class MyEditor extends React.Component {
     }
     return (
       <div className="RichEditor-root">
+        <DraftNav />
         <button onClick={this._onBoldClick.bind(this)}>Bold</button>
         <BlockStyleControls
           editorState={editorState}
