@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
 // var d = require('./data.json')
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   const url = 'http://misjeofmconv.16mb.com/wp-json/wp/v2/posts'
+  console.log('I am in wpdata file')
   fetch(url, {
     type: 'GET',
   })

@@ -7,13 +7,13 @@ import {
 
 export const saveRawStore = value => {
   return ({
-    type: SAVE_DRAFT_HTML_IN_STORE,
+    type: SAVE_DRAFT_RAW_IN_STORE,
     value
   })
 }
 export const saveHtmlStore = value => {
   return ({
-    type: SAVE_DRAFT_RAW_IN_STORE,
+    type: SAVE_DRAFT_HTML_IN_STORE,
     value
   })
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   convertFromRaw,
   convertToRaw,
@@ -7,7 +8,17 @@ import {
   Editor,
   EditorState,
 } from 'draft-js';
+import { saveRawStore, saveHtmlStore } from '../../state/actionCreators';
 import DraftNav from './DraftNav';
+
+const mapStateToProps = state => ({
+  currentRawContent: state.draftData.currentRawContent,
+})
+
+const mapDispatchToProps = dispatch => ({
+  saveRawStore: ent => dispatch(saveRawStore(ent)),
+})
+
 const rawContent = {
   blocks: [
     {
@@ -88,8 +99,8 @@ class EntityEditorExample extends React.Component {
       console.log(convertToRaw(content));
     };
   }
-  handleSaveRaw = () => {
-    console.log('click')
+  handleSaveRaw = content => {
+    this.props.saveRawStore(content);
   }
   render() {
     return (
@@ -176,4 +187,4 @@ const styles = {
   },
 };
 
-export default EntityEditorExample;
+export default connect(mapStateToProps, mapDispatchToProps)(EntityEditorExample)
