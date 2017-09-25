@@ -20,3 +20,6 @@ source-info
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# log credentials
+client/src/components/auth/auth0-variables.js

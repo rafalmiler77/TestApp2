@@ -23,7 +23,7 @@ const Navigation = props => {
         <Paper style={style}>
           <Menu>
             <Link to="/wpdata"><MenuItem primaryText="wpdata" /></Link>
-            <MenuItem primaryText="empty" />
+            <Link to="/auth"><MenuItem primaryText="0auth" /></Link>
           </Menu>
         </Paper>
       </div>

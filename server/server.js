@@ -1,16 +1,26 @@
-var express = require('express');
+const express = require('express');
 const morgan = require('morgan');
 require('dotenv').config();
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const Pusher = require('pusher');
 
-var index = require('./routes/index');
-var wpdata = require('./routes/wpdata');
+const index = require('./routes/index');
+const wpdata = require('./routes/wpdata');
 
-var app = express();
+//initialize Pusher with your appId, key and secret
+
+const pusher = new Pusher({
+  appId: '405296',
+  key: '606a5eb22944259ae8a9',
+  secret: 'a7b222aa18d569acb17c',
+  cluster: 'eu',
+  encrypted: true
+});
+const app = express();
 // app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 // app.use('/routes', index)
@@ -24,13 +34,29 @@ var app = express();
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(logger('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', index);
+app.post('/message/send', (req, res) => {
+  // 'private' is prefixed to indicate that this is a private channel
+  pusher.trigger('private-reactchat', 'messages', {
+    message: req.body.message,
+    username: req.body.username
+  });
+  res.sendStatus(200);
+});
+// API route used by Pusher as a way of authenticating users
+app.post('/pusher/auth', (req, res) => {
+  const socketId = req.body.socket_id;
+  const channel = req.body.channel_name;
+  const auth = pusher.authenticate(socketId, channel);
+  res.send(auth);
+});
 app.use('/wpdata', wpdata);
 // app.use('/', express.static('../client/build'));
 // app.use(express.static(path.resolve(__dirname, '../client', 'build')));
@@ -98,6 +124,6 @@ app.get('*', function (request, response) {
 });
 
 app.set('port', process.env.PORT || 53764);
-var server = app.listen(app.get('port'), function () {
+const server = app.listen(app.get('port'), function () {
   console.log('--- Listening on port ' + app.get('port'));
 });

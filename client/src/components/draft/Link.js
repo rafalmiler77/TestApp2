@@ -107,9 +107,7 @@ class LinkEditorExample extends React.Component {
     }
   }
   handleSaveRaw = content => {
-    console.log('click')
     this.props.saveRawStore(content);
-
   }
   render() {
     const raw = convertToRaw(this.state.editorState.getCurrentContent())
