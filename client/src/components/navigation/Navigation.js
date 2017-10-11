@@ -24,6 +24,7 @@ const Navigation = props => {
           <Menu>
             <Link to="/wpdata"><MenuItem primaryText="wpdata" /></Link>
             <Link to="/auth"><MenuItem primaryText="0auth" /></Link>
+            <Link to="/renderProp"><MenuItem primaryText="renderProp" /></Link>
           </Menu>
         </Paper>
       </div>

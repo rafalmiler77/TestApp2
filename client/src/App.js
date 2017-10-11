@@ -10,6 +10,7 @@ import Draft from './components/draft/Draft';
 import MyEditor from './components/draft/MyEditor';
 import Entity from './components/draft/Entity';
 import Link from './components/draft/Link';
+import RenderProp from './components/renderProp/RenderProp';
 
 import Auth from './components/auth/Auth';
 import history from './history';
@@ -44,6 +45,8 @@ class App extends Component {
               <Route exact path="/draft-testing/editor" component={MyEditor} />
               <Route exact path="/draft-testing/entity" component={Entity} />
               <Route exact path="/draft-testing/link" component={Link} />
+
+              <Route path="/renderProp" component={RenderProp} />
 
               <Route path="/auth" render={(props) => <AuthApp auth={auth} {...props} />} />
               <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
