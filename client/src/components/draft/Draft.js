@@ -29,27 +29,33 @@ class Draft extends Component {
 // You can then reference them in your code:
 // fetch({ process.env.REACT_APP_SECRET_CODE } / endpoint)
 
-  async componentDidMount() {
-    const response = await fetch('/wpdata')
-    const wpdata = await response.json()
-    this.setState({ data: wpdata })
-    this.props.wpContentToStore(wpdata)
-  }
-
-  // componentDidMount() {
-  //   if (this.props.wpContent === null) {
-  //     fetch('/wpdata')
-  //       .then(res => {
-  //         console.log(res)
-  //         return res.json();
-  //       })
-  //       .then(items => {
-  //         this.setState({ data: items })
-  //         this.props.wpContentToStore(items)
-  //       }
-  //       );
+  // async componentDidMount() {
+  //   const response = await fetch('/wpdata')
+  //   if (response.status !== 200) {
+  //     const msg = 'Problems with fetching resources'
+  //     this.setState({ data: msg })
+  //     this.props.wpContentToStore([msg])
+  //     return;
   //   }
+  //   const wpdata = response.json();
+  //   this.setState({ data: wpdata })
+  //   this.props.wpContentToStore(wpdata)
   // }
+
+  componentDidMount() {
+    if (this.props.wpContent === null) {
+      fetch('/wpdata')
+        .then(res => {
+          console.log(res)
+          return res.json();
+        })
+        .then(items => {
+          this.setState({ data: items })
+          this.props.wpContentToStore(items)
+        }
+        );
+    }
+  }
 handleClick = id => {
   console.log('id', id)
   this.setState({ chosenArticleId: id })

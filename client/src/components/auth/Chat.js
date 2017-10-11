@@ -26,7 +26,7 @@ class Chat extends Component {
     // Establish a connection to Pusher.
     this.pusher = new Pusher('APP_KEY', {
       authEndpoint: '/pusher/auth',
-      cluster: 'YOUR_CLUSTER',
+      cluster: 'eu',
       encrypted: true
     });
     // Subscribe to the 'private-reactchat' channel

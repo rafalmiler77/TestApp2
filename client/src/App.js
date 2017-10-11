@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
@@ -35,7 +35,7 @@ class App extends Component {
     console.log('rendering App.js...')
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <Router history={history}>
+        <Router history={customHistory}>
 
           <Layout>
             <Switch>
